@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<SharedFlowBundle revision="49" name="GCP-Logs-Postflow">
+<SharedFlowBundle revision="51" name="GCP-Logs-Postflow">
   <DisplayName/>
   <Description>Add in post flow for logging Response to Cloud logs</Description>
-  <CreatedAt>1770802453366</CreatedAt>
-  <LastModifiedAt>1770802453366</LastModifiedAt>
+  <CreatedAt>1771216166313</CreatedAt>
+  <LastModifiedAt>1771216166313</LastModifiedAt>
   <Policies>
     <Policy>KVM-Get-SAKey-JSON</Policy>
     <Policy>JS-Shred-SAKey-JSON</Policy>

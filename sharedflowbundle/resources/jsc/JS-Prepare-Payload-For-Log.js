@@ -43,7 +43,7 @@ function truncatePayload(payload, maxLen) {
   };
 }
 
-/* ========= Request ========= */
+/* ========= Request (เหมือนเดิม ใช้ได้แล้ว) ========= */
 var reqCT = context.getVariable("request.header.Content-Type");
 var reqLen = context.getVariable("request.header.Content-Length");
 var reqPayload = context.getVariable("request.content");
@@ -62,23 +62,47 @@ if (isBinaryOrMultipart(reqCT)) {
 
 context.setVariable("reqPayload", JSON.stringify(reqLog));
 
-/* ========= Response ========= */
+/* ========= Response (รองรับทั้ง success + error) ========= */
+var statusCode = context.getVariable("response.status.code");
 var resCT = context.getVariable("response.header.Content-Type");
 var resLen = context.getVariable("response.header.Content-Length");
 var resTE = context.getVariable("response.header.Transfer-Encoding");
-var resPayload = context.getVariable("response.content");
+
+// 🔥 จุดสำคัญ: เลือก payload ให้ถูกแหล่ง
+var resPayload = null;
+
+// ถ้าเป็น error status ให้ลองดึงจาก error.content ก่อน
+if (statusCode >= 400) {
+  resPayload = context.getVariable("error.content");
+  
+  // fallback ถ้า error.content ไม่มี
+  if (!resPayload) {
+    resPayload = context.getVariable("response.content");
+  }
+} else {
+  // success ปกติ
+  resPayload = context.getVariable("response.content");
+}
 
 var resLog;
+
 if (isBinaryOrMultipart(resCT)) {
   resLog = {
     type: "file",
     skippedPayload: true,
+    statusCode: statusCode,
     contentType: resCT,
     contentLength: resLen ? parseInt(resLen, 10) : null,
     transferEncoding: resTE || null
   };
 } else {
-  resLog = truncatePayload(resPayload, MAX_LEN);
+  var bodyLog = truncatePayload(resPayload, MAX_LEN);
+
+  resLog = {
+    statusCode: statusCode,
+    isError: statusCode >= 400,
+    body: bodyLog
+  };
 }
 
 context.setVariable("resPayload", JSON.stringify(resLog));
