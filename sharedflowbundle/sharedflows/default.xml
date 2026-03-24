@@ -1,74 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <SharedFlow name="default">
   <Step>
-    <Condition>(request.verb != "OPTIONS")</Condition>
-    <Name>JS-Prepare-Payload-For-Log</Name>
+    <Name>JS-DecodeOauth2</Name>
+    <Condition>(request.verb != "OPTIONS") AND (request.header.Authorization != null)</Condition>
   </Step>
   <Step>
-    <Condition>(request.verb != "OPTIONS")</Condition>
-    <Name>KVM-Get-SAKey-JSON</Name>
-  </Step>
-  <Step>
-    <Condition>(request.verb != "OPTIONS")</Condition>
-    <Name>JS-Shred-SAKey-JSON</Name>
-  </Step>
-  <Step>
-    <!-- see if there is a viable token in cache -->
-    <Name>Cache-Get-GCP-Logging-Token</Name>
+    <Name>AM-Inject-Proxy-Revision-Header</Name>
     <Condition>(request.verb != "OPTIONS")</Condition>
   </Step>
   <Step>
-    <!-- no token? generate a JWT to send to the Google OAuth service -->
-    <Name>JWT-Generate-GCP-Logging-token</Name>
-    <Condition>(request.verb != "OPTIONS") and (gcplogging.token = null)</Condition>
-  </Step>
-  <Step>
-    <!-- no token? send the request to the Google OAuth service -->
-    <Name>SC-Obtain-GCP-Logging-AccessToken</Name>
-    <Condition>(request.verb != "OPTIONS") and (gcplogging.token = null)</Condition>
-  </Step>
-  <Step>
-    <!-- no token? extract the new token and expiry from the response from the Google OAuth service -->
-    <Name>Extract-GCP-Logging-AccessToken</Name>
-    <Condition>(request.verb != "OPTIONS") and (gcplogging.token = null)</Condition>
-  </Step>
-  <Step>
-    <!-- no token? adjust the expiry downward to be conservative with cache TTL -->
-    <Name>JS-Adjust-Expiry</Name>
-    <Condition>(request.verb != "OPTIONS") and (gcplogging.token = null)</Condition>
-  </Step>
-  <Step>
-    <!-- no token? check for failure (no new token) -->
-    <Name>RF-No-AccessToken</Name>
-    <Condition>(request.verb != "OPTIONS") and (gcplogging.token = null) and (gcplogging.newtoken = null)</Condition>
-  </Step>
-  <Step>
-    <!-- new token? insert it into cache -->
-    <Name>Cache-Put-GCP-Logging-Token</Name>
-    <Condition>(request.verb != "OPTIONS") and (gcplogging.token = null) and (gcplogging.newtoken != null)</Condition>
-  </Step>
-  <Step>
-    <!-- new token? copy it to the context variable we want -->
-    <Name>AM-Set-GCP-Logging-Token</Name>
-    <Condition>(request.verb != "OPTIONS") and (gcplogging.token = null)</Condition>
-  </Step>
-  <!-- set the project id and the log ID -->
-  <Step>
-    <Name>AM-Set-GCP-Logging-Settings</Name>
+    <Name>getAssets</Name>
     <Condition>(request.verb != "OPTIONS")</Condition>
   </Step>
   <Step>
-    <!-- or conditionally, invoke the logging API  via ServiceCallout -->
-    <Name>SC-Log-To-GCP-Logging</Name>
-    <Condition>(request.verb != "OPTIONS") and (response.status.code &lt; 400)</Condition>
+    <Name>KVM-add-SAKey-JSON</Name>
+    <Condition>(request.verb != "OPTIONS")</Condition>
   </Step>
   <Step>
-    <Name>JS-Set-Severity</Name>
-    <Condition>(request.verb != "OPTIONS") and (response.status.code &gt;= 400)</Condition>
-  </Step>
-  <Step>
-    <!-- or conditionally, invoke the logging API  via ServiceCallout -->
-    <Name>SC-Log-To-GCP-Logging-Error</Name>
-    <Condition>(request.verb != "OPTIONS") and (response.status.code &gt;= 400)</Condition>
+    <Name>JS-log-headers-req</Name>
   </Step>
 </SharedFlow>

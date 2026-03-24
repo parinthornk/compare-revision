@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlowBundle revision="12" name="GCP-Logs-Preflow-OAuth2Token">
+  <DisplayName/>
+  <Description>Add to Preflow for log monitoring to Cloud logs</Description>
+  <CreatedAt>1769708381453</CreatedAt>
+  <LastModifiedAt>1769708381453</LastModifiedAt>
+  <Policies>
+    <Policy>KVM-add-SAKey-JSON</Policy>
+    <Policy>AM-Inject-Proxy-Revision-Header</Policy>
+    <Policy>Add-User</Policy>
+    <Policy>getAssets</Policy>
+    <Policy>JS-DecodeOauth2</Policy>
+    <Policy>JS-log-headers-req</Policy>
+  </Policies>
+  <Resources>
+    <Resource>jsc://Getasset.js</Resource>
+    <Resource>jsc://JS-DecodeOauth2.js</Resource>
+    <Resource>jsc://JS-log-headers-req.js</Resource>
+  </Resources>
+  <SharedFlows>
+    <SharedFlow>default</SharedFlow>
+  </SharedFlows>
+  <subType>SharedFlow</subType>
+</SharedFlowBundle>

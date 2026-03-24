@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Javascript continueOnError="true" enabled="true" timeLimit="200" name="JS-Set-Severity">
-  <DisplayName>JS-Set-Severity</DisplayName>
-  <Properties/>
-  <ResourceURL>jsc://JS-Set-Severity.js</ResourceURL>
-</Javascript>
