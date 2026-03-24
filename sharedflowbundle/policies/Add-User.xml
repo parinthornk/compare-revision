@@ -3,7 +3,7 @@
   <DisplayName>Add User</DisplayName>
   <AssignVariable>
     <Name>api-user</Name>
-    <Value>no jwt</Value>
+    <Ref>developer.app.name</Ref>
   </AssignVariable>
   <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
   <AssignTo createNew="false" transport="http" type="request"/>

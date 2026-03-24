@@ -2,7 +2,7 @@
 <KeyValueMapOperations name="KVM-add-SAKey-JSON" continueOnError="true" enabled="true">
   <Scope>environment</Scope>
   <ExpiryTimeInSecs>86400</ExpiryTimeInSecs>
-  <MapName>logs-secrets</MapName>
+  <MapName>secrets1</MapName>
   <Put>
     <Key>
       <Parameter>sakeyjson</Parameter>

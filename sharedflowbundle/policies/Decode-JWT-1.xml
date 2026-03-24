@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<DecodeJWT continueOnError="false" enabled="true" name="Decode-JWT-1">
-  <DisplayName>Decode JWT-1</DisplayName>
-</DecodeJWT>
