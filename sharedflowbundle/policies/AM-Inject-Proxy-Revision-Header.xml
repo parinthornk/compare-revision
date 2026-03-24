@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<AssignMessage continueOnError="true" enabled="true" name="AM-Inject-Proxy-Revision-Header">
+<AssignMessage name="AM-Inject-Proxy-Revision-Header">
   <Set>
     <Headers>
       <Header name="APIProxy">{apiproxy.name} r{apiproxy.revision}</Header>

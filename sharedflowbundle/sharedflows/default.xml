@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <SharedFlow name="default">
   <Step>
-    <Name>JS-DecodeOauth2</Name>
-    <Condition>(request.verb != "OPTIONS") AND (request.header.Authorization != null)</Condition>
+    <Condition>(request.verb != "OPTIONS")</Condition>
+    <Name>Add-User</Name>
   </Step>
   <Step>
     <Name>AM-Inject-Proxy-Revision-Header</Name>
@@ -15,8 +15,5 @@
   <Step>
     <Name>KVM-add-SAKey-JSON</Name>
     <Condition>(request.verb != "OPTIONS")</Condition>
-  </Step>
-  <Step>
-    <Name>JS-log-headers-req</Name>
   </Step>
 </SharedFlow>
