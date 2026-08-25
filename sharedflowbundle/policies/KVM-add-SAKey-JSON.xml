@@ -7,6 +7,6 @@
     <Key>
       <Parameter>sakeyjson</Parameter>
     </Key>
-    <Value></Value>
+    <Value>{}</Value>
   </Put>
 </KeyValueMapOperations>
