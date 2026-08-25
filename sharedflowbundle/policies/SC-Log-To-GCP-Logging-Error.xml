@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout name="SC-Log-To-GCP-Logging-Error" continueOnError="true">
+  <Request>
+    <Set>
+      <Headers>
+        <Header name="authorization">Bearer {gcplogging.token}</Header>
+      </Headers>
+      <Payload contentType="application/json">{
+  "logName": "projects/{gcplogging.projectid}/logs/{gcplogging.logid}",
+  "resource" : {
+    "type": "api",
+    "labels": {
+        "service" : "{apiproxy.name}",
+        "version" : "{apiproxy.revision}"
+    }
+  },
+  "labels": {
+      "flavor" : "tracking",
+      "assets" : "{assets}",
+      "environment" : "{environment.name}",
+      "clientIp" : "{proxy.client.ip}",
+      "method": "{request.verb}",
+      "path": "{proxy.pathsuffix}",
+      "userAgent": "{userAgent}",
+      "reqPayload" : "{escapeJSON(reqPayload)}",
+      "reqHeader" : {req_headers},
+      "reqQuery" : "{request.querystring}",
+      "reqApp": {Info_application}
+    },
+  "entries": [{
+      "severity": "{log.severity}",
+      "httpRequest": {
+            "requestUrl" : "{proxy.url}",
+            "requestMethod" : "{request.verb}",
+            "userAgent": "{userAgent}",
+            "status" : {message.status.code}
+       },
+      "textPayload" : "{escapeJSON(resPayload)}"
+     }
+  ],
+  "partialSuccess": true
+}
+</Payload>
+      <Verb>POST</Verb>
+    </Set>
+  </Request>
+  <!-- omit the response to "fire and forget" -->
+  <!--
+      <Response>logResponse</Response>
+  -->
+  <HTTPTargetConnection>
+    <Properties>
+      <Property name="success.codes">2xx, 3xx, 4xx, 5xx</Property>
+    </Properties>
+    <URL>https://logging.googleapis.com/v2/entries:write</URL>
+  </HTTPTargetConnection>
+</ServiceCallout>

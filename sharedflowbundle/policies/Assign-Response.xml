@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<AssignMessage continueOnError="true" enabled="true" name="Add-User">
-  <DisplayName>Add User</DisplayName>
+<AssignMessage continueOnError="true" enabled="true" name="Assign-Response">
+  <DisplayName>Assign-Response</DisplayName>
+  <Properties/>
   <AssignVariable>
-    <Name>api-user</Name>
-    <Ref>developer.app.name</Ref>
+    <Name>resPayload</Name>
+    <Value/>
+    <Ref>response.content</Ref>
   </AssignVariable>
   <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
   <AssignTo createNew="false" transport="http" type="request"/>

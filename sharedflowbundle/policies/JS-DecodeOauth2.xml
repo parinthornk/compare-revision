@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Javascript continueOnError="false" enabled="true" timeLimit="200" name="JS-DecodeOauth2">
-  <DisplayName>JS-DecodeOauth2</DisplayName>
-  <Properties/>
-  <ResourceURL>jsc://JS-DecodeOauth2.js</ResourceURL>
-</Javascript>

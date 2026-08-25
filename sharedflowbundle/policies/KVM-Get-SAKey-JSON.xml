@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<KeyValueMapOperations name="KVM-add-SAKey-JSON" continueOnError="true" enabled="true">
+<KeyValueMapOperations name="KVM-Get-SAKey-JSON" continueOnError="true" enabled="true">
   <Scope>environment</Scope>
   <ExpiryTimeInSecs>86400</ExpiryTimeInSecs>
   <MapName>secrets1</MapName>
-  <Put>
+  <Get assignTo="private.sakeyjson">
     <Key>
       <Parameter>sakeyjson</Parameter>
     </Key>
-    <Value>{}</Value>
-  </Put>
+  </Get>
 </KeyValueMapOperations>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="true" enabled="true" name="Assign-Request">
+  <DisplayName>Assign-Request</DisplayName>
+  <Properties/>
+  <AssignVariable>
+    <Name>reqPayload</Name>
+    <Value/>
+    <Ref>request.content</Ref>
+  </AssignVariable>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>
