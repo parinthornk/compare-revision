@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="18" name="SCM-AI-MATERIAL-MASTER">
+  <DisplayName/>
+  <Description>API documentation for SCM Marine Dashboard</Description>
+  <CreatedAt>1772772198024</CreatedAt>
+  <LastModifiedAt>1772772198024</LastModifiedAt>
+  <BasePaths>/scm/ai-material-master</BasePaths>
+  <BasePaths>/scm/ai-material-master/v1/public</BasePaths>
+  <Policies>
+    <Policy>CORS</Policy>
+    <Policy>Cloudlog-Pre</Policy>
+    <Policy>FC-AAA</Policy>
+    <Policy>RF-NotFound</Policy>
+    <Policy>Cloudlog-Post</Policy>
+    <Policy>VA-X-Apikey</Policy>
+  </Policies>
+  <ProxyEndpoints>
+    <ProxyEndpoint>ai-material-master</ProxyEndpoint>
+    <ProxyEndpoint>public</ProxyEndpoint>
+  </ProxyEndpoints>
+  <TargetEndpoints>
+    <TargetEndpoint>ai-material-master</TargetEndpoint>
+    <TargetEndpoint>public</TargetEndpoint>
+  </TargetEndpoints>
+</APIProxy>

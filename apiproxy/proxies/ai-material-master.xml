@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="ai-material-master">
+  <Description/>
+  <FaultRules/>
+  <PreFlow name="PreFlow">
+    <Request>
+      <Step>
+        <Name>CORS</Name>
+      </Step>
+      <Step>
+        <Name>FC-AAA</Name>
+      </Step>
+      <Step>
+        <Name>Cloudlog-Pre</Name>
+      </Step>
+    </Request>
+    <Response/>
+  </PreFlow>
+  <PostFlow name="PostFlow">
+    <Request/>
+    <Response>
+      <Step>
+        <Name>Cloudlog-Post</Name>
+      </Step>
+    </Response>
+  </PostFlow>
+  <Flows>
+    <Flow name="/healthz get">
+      <Description>Health Check</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/healthz") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="/v1/favorite-plant/{id} put">
+      <Description>Set a plant as favorite</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/v1/favorite-plant/{id}") and (request.verb = "PUT")</Condition>
+    </Flow>
+    <Flow name="/v1/favorite-plant/{id} delete">
+      <Description>Remove a plant from favorites</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/v1/favorite-plant/{id}") and (request.verb = "DELETE")</Condition>
+    </Flow>
+    <Flow name="/v1/job/download-master-template get">
+      <Description>Download SharePoint Master Template</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/v1/job/download-master-template") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="/v1/job/master-template/sync post">
+      <Description>Sync Master Template from SharePoint</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/v1/job/master-template/sync") and (request.verb = "POST")</Condition>
+    </Flow>
+    <Flow name="/v1/manufacturer get">
+      <Description>Get a list of manufacturer</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/v1/manufacturer") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="/v1/manufacturer post">
+      <Description>Create blank manufacturer by session ID</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/v1/manufacturer") and (request.verb = "POST")</Condition>
+    </Flow>
+    <Flow name="/v1/manufacturer/{id} get">
+      <Description>Get Manufacturer item by ID</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/v1/manufacturer/{id}") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="/v1/manufacturer/{id} put">
+      <Description>Update manufacturer</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/v1/manufacturer/{id}") and (request.verb = "PUT")</Condition>
+    </Flow>
+    <Flow name="/v1/manufacturer/{id} delete">
+      <Description>Remove a manufacturer from favorites</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/v1/manufacturer/{id}") and (request.verb = "DELETE")</Condition>
+    </Flow>
+    <Flow name="/v1/material-items post">
+      <Description>Create blank material item by session ID</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/v1/material-items") and (request.verb = "POST")</Condition>
+    </Flow>
+    <Flow name="/v1/material-items put">
+      <Description>Update material item</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/v1/material-items") and (request.verb = "PUT")</Condition>
+    </Flow>
+    <Flow name="/v1/material-items/{id} get">
+      <Description>Get material item by ID</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/v1/material-items/{id}") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="/v1/material-items/{id} delete">
+      <Description>Delete material item by ID</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/v1/material-items/{id}") and (request.verb = "DELETE")</Condition>
+    </Flow>
+    <Flow name="/v1/material-items/{id}/cancel put">
+      <Description>Cancel a material item</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/v1/material-items/{id}/cancel") and (request.verb = "PUT")</Condition>
+    </Flow>
+    <Flow name="/v1/material-items/ai-check/batch post">
+      <Description>Trigger AI check for material items (batch)</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/v1/material-items/ai-check/batch") and (request.verb = "POST")</Condition>
+    </Flow>
+    <Flow name="/v1/material-items/ai-check/single post">
+      <Description>Trigger AI check for a single material item</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/v1/material-items/ai-check/single") and (request.verb = "POST")</Condition>
+    </Flow>
+    <Flow name="/v1/material-items/import post">
+      <Description>Get a list of Unit Of Measurement</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/v1/material-items/import") and (request.verb = "POST")</Condition>
+    </Flow>
+    <Flow name="/v1/material-items/preview-longtext post">
+      <Description>Generate a preview of the long text from attributes</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/v1/material-items/preview-longtext") and (request.verb = "POST")</Condition>
+    </Flow>
+    <Flow name="/v1/material-items/search post">
+      <Description>POST material main&amp;sub group and category with search field to search the previous input data</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/v1/material-items/search") and (request.verb = "POST")</Condition>
+    </Flow>
+    <Flow name="/v1/material-items/submit/duplicate post">
+      <Description>Submit a material item as a duplicate</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/v1/material-items/submit/duplicate") and (request.verb = "POST")</Condition>
+    </Flow>
+    <Flow name="/v1/material-items/submit/new post">
+      <Description>Submit a new material item for creation</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/v1/material-items/submit/new") and (request.verb = "POST")</Condition>
+    </Flow>
+    <Flow name="restart_scheduler">
+      <Description>Restart Scheduler</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/v1/scheduler/restart") and (request.verb = "POST")</Condition>
+    </Flow>
+    <Flow name="/v1/sessions get">
+      <Description>Get a list of sessions</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/v1/sessions") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="/v1/sessions/{id} get">
+      <Description>Get a session by ID</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/v1/sessions/{id}") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="/v1/sessions/{id} put">
+      <Description>Update an existing session</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/v1/sessions/{id}") and (request.verb = "PUT")</Condition>
+    </Flow>
+    <Flow name="/v1/sessions/{id}/report get">
+      <Description>Get a summary report for a session</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/v1/sessions/{id}/report") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="/v1/sessions/{id}/submit-as-done post">
+      <Description>Submit a session as done</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/v1/sessions/{id}/submit-as-done") and (request.verb = "POST")</Condition>
+    </Flow>
+    <Flow name="/v1/sessions/cleanse post">
+      <Description>Create a new cleansing session</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/v1/sessions/cleanse") and (request.verb = "POST")</Condition>
+    </Flow>
+    <Flow name="/v1/sessions/create post">
+      <Description>Create a new session for material creation</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/v1/sessions/create") and (request.verb = "POST")</Condition>
+    </Flow>
+    <Flow name="NotFound">
+      <Description>NotFound</Description>
+      <Request>
+        <Step>
+          <Name>RF-NotFound</Name>
+        </Step>
+      </Request>
+      <Response/>
+      <Condition>(request.verb != "OPTIONS")</Condition>
+    </Flow>
+  </Flows>
+  <HTTPProxyConnection>
+    <BasePath>/scm/ai-material-master</BasePath>
+    <Properties/>
+  </HTTPProxyConnection>
+  <RouteRule name="ai-material-master">
+    <TargetEndpoint>ai-material-master</TargetEndpoint>
+  </RouteRule>
+</ProxyEndpoint>

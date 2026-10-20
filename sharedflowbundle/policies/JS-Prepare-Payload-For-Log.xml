@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Javascript continueOnError="true" enabled="true" timeLimit="200" name="JS-Prepare-Payload-For-Log">
-  <DisplayName>JS-Prepare-Payload-For-Log</DisplayName>
-  <Properties/>
-  <ResourceURL>jsc://JS-Prepare-Payload-For-Log.js</ResourceURL>
-</Javascript>

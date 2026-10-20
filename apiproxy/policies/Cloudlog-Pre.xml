@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<FlowCallout continueOnError="false" enabled="true" name="Cloudlog-Pre">
+  <DisplayName>Cloudlog-Pre</DisplayName>
+  <Parameters/>
+  <SharedFlowBundle>GCP-Logs-Preflow</SharedFlowBundle>
+</FlowCallout>

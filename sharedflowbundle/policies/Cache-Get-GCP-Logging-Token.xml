@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<LookupCache name="Cache-Get-GCP-Logging-Token" continueOnError="true">
-  <Scope>Application</Scope>
-  <AssignTo>gcplogging.token</AssignTo>
-  <CacheKey>
-    <KeyFragment>gcplogging.token</KeyFragment>
-  </CacheKey>
-</LookupCache>

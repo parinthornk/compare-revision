@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="public">
+  <Description/>
+  <FaultRules/>
+  <PreFlow name="PreFlow">
+    <Request>
+      <Step>
+        <Name>CORS</Name>
+      </Step>
+      <Step>
+        <Name>VA-X-Apikey</Name>
+      </Step>
+      <Step>
+        <Name>Cloudlog-Pre</Name>
+      </Step>
+    </Request>
+    <Response/>
+  </PreFlow>
+  <PostFlow name="PostFlow">
+    <Request/>
+    <Response>
+      <Step>
+        <Name>Cloudlog-Post</Name>
+      </Step>
+    </Response>
+  </PostFlow>
+  <Flows>
+    <Flow name="/certificates get">
+      <Description>Get a list of certificates</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/certificates") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="/groups get">
+      <Description>Get material main and sub group list</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/groups") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="/material-items/callback post">
+      <Description>Callback API for AI to return material item results</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/material-items/callback") and (request.verb = "POST")</Condition>
+    </Flow>
+    <Flow name="/material-items/mdg/callback post">
+      <Description>MDG Service callback endpoint for material item analysis results</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/material-items/mdg/callback") and (request.verb = "POST")</Condition>
+    </Flow>
+    <Flow name="/plant-mrp get">
+      <Description>Get material plant and mrp relationship with country</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/plant-mrp") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="/shelf-life-options get">
+      <Description>Get a list of shelf life "from" options</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/shelf-life-options") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="/template/download get">
+      <Description>Download Template</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/template/download") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="/templates get">
+      <Description>Get material template list</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/templates") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="/uoms get">
+      <Description>Get a list of Unit Of Measurement</Description>
+      <Request/>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/uoms") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="NotFound">
+      <Description>NotFound</Description>
+      <Request>
+        <Step>
+          <Name>RF-NotFound</Name>
+        </Step>
+      </Request>
+      <Response/>
+      <Condition>(request.verb != "OPTIONS")</Condition>
+    </Flow>
+  </Flows>
+  <HTTPProxyConnection>
+    <BasePath>/scm/ai-material-master/v1/public</BasePath>
+    <Properties/>
+  </HTTPProxyConnection>
+  <RouteRule name="ai-material-master">
+    <TargetEndpoint>public</TargetEndpoint>
+  </RouteRule>
+</ProxyEndpoint>
